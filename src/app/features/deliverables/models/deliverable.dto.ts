@@ -5,7 +5,7 @@ export interface DeliverablePostDto {
 }
 
 export interface DeliverablePatchDto {
-  newStatus: "InProgress" | "Completed" | "Cancelled"
+  newStatus: string
 }
 
 export interface DeliverableGetDto {

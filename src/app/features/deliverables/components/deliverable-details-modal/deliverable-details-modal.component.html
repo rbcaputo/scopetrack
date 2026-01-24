@@ -1,0 +1,58 @@
+<div class="modal-backdrop">
+  <div class="modal deliverable-modal" *ngIf="deliverable$ | async as deliverable">
+    <div class="modal-header">
+      <h2>{{ deliverable.title }}</h2>
+      <button class="close-button" (click)="onClose()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <section class="deliverable-details">
+        <div class="detail-row">
+          <span class="label">Description:</span>
+          <span class="value">{{ deliverable.description || 'No description' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Status:</span>
+          <span class="value status-badge" [class]="deliverable.status.toLowerCase()">
+            {{ deliverable.status }}
+          </span>
+        </div>
+        <div class="detail-row" *ngIf="deliverable.dueDate">
+          <span class="label">Due Date:</span>
+          <span class="value">{{ deliverable.dueDate | date:'medium' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Created:</span>
+          <span class="value">{{ deliverable.createdAt | date:'medium' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Last Updated:</span>
+          <span class="value">{{ deliverable.updatedAt | date:'medium' }}</span>
+        </div>
+      </section>
+
+      <section class="actions-section">
+        <h3>Actions</h3>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <div class="status-actions">
+          <p>Change status to:</p>
+          <div class="status-buttons">
+            <button
+              *ngFor="let status of availableStatuses"
+              [disabled]="status === deliverable.status || isUpdating"
+              (click)="onStatusChange(status)"
+              class="status-button"
+              [class]="status.toLowerCase()">
+              {{ status }}
+            </button>
+          </div>
+          <p *ngIf="isUpdating" class="updating-message">Updating...</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

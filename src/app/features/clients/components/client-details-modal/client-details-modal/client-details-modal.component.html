@@ -1,14 +1,58 @@
 <div class="modal-backdrop">
-  <div class="modal">
-    <button (click)="onClose()">Close</button>
-
-    <ng-container *ngIf="client$ | async as client">
+  <div class="modal" *ngIf="client$ | async as client">
+    <div class="modal-header">
       <h2>{{ client.name }}</h2>
-      <p> {{ client.id }}</p>
-      <p>{{ client.email }}</p>
-      <p>{{ client.status }}</p>
-      <p>Created: {{ client.createdAt }}</p>
-      <p>Updated: {{ client.updatedAt }}</p>
-    </ng-container>
+      <button class="close-button" (click)="onClose()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <section class="client-details">
+        <div class="detail-row">
+          <span class="label">Email:</span>
+          <span class="value">{{ client.email }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Status:</span>
+          <span class="value status-badge" [class.active]="client.status === 'Active'">
+            {{ client.status }}
+          </span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Created:</span>
+          <span class="value">{{ client.createdAt | date:'medium' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Last Updated:</span>
+          <span class="value">{{ client.updatedAt | date:'medium' }}</span>
+        </div>
+      </section>
+
+      <section class="contracts-section">
+        <h3>Contracts ({{ client.contracts.length }})</h3>
+
+        <div *ngIf="client.contracts.length === 0" class="empty-state">
+          <p>No contracts for this client yet.</p>
+        </div>
+
+        <ul *ngIf="client.contracts.length > 0" class="contracts-list">
+          <li *ngFor="let contract of client.contracts"
+              class="contract-item"
+              (click)="onContractSelected(contract.id)">
+            <div class="contract-summary">
+              <h4>{{ contract.title }}</h4>
+              <span class="status-badge">{{ contract.status }}</span>
+            </div>
+            <p class="contract-type">{{ contract.type }}</p>
+            <p class="deliverables-count">{{ contract.deliverables.length }} deliverable(s)</p>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
+
+  <app-contract-details-modal
+    *ngIf="selectedContractId"
+    [contractId]="selectedContractId"
+    (close)="onContractModalClosed()">
+  </app-contract-details-modal>
 </div>

@@ -1,1 +1,28 @@
-<p>contract-list works!</p>
+<div class="contract-list">
+  <h2>Contracts</h2>
+
+  <div *ngIf="!contracts || contracts.length === 0" class="empty-state">
+    <p>No contracts found.</p>
+  </div>
+
+  <ul *ngIf="contracts && contracts.length > 0" class="contracts">
+    <li *ngFor="let contract of contracts"
+        class="contract-item"
+        (click)="onSelect(contract.id)">
+      <div class="contract-summary">
+        <div class="contract-header">
+          <h3>{{ contract.title }}</h3>
+          <span class="status-badge" [class]="contract.status.toLowerCase()">
+            {{ contract.status }}
+          </span>
+        </div>
+        <p class="contract-description">{{ contract.description || 'No description' }}</p>
+        <div class="contract-meta">
+          <span class="contract-type">{{ contract.type }}</span>
+          <span class="deliverable-count">{{ contract.deliverables.length }} deliverable(s)</span>
+          <span class="created-date">Created: {{ contract.createdAt | date:'short' }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

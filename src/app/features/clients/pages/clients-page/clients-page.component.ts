@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ClientApi } from '../../api/client.api';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { ClientListComponent } from "../../components/client-list/client-list.component";
-import { ClientDetailsModalComponent } from "../../components/client-details-modal/client-details-modal/client-details-modal.component";
+import { ClientDetailsModalComponent } from '../../components/client-details-modal/client-details-modal/client-details-modal.component';
 
 @Component({
   selector: 'app-clients-page',
@@ -19,7 +19,7 @@ export class ClientsPageComponent implements OnInit {
   constructor(private readonly clientApi: ClientApi) { }
 
   ngOnInit(): void {
-    this.clients$ = this.clientApi.getAll();
+    this.loadClients();
   }
 
   public onClientSelected(id: string): void {
@@ -28,5 +28,10 @@ export class ClientsPageComponent implements OnInit {
 
   public onModalClosed(): void {
     this.selectedClientId = null;
+    this.loadClients();
+  }
+
+  private loadClients(): void {
+    this.clients$ = this.clientApi.getAll();
   }
 }

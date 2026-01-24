@@ -1,3 +1,12 @@
 <h1>Contracts</h1>
 
-<app-contract-list [contracts]="contracts$ | async" (select)="onContractSelected($event)"></app-contract-list>
+<app-contract-list
+  [contracts]="contracts$ | async"
+  (select)="onContractSelected($event)">
+</app-contract-list>
+
+<app-contract-details-modal
+  *ngIf="selectedContractId"
+  [contractId]="selectedContractId"
+  (close)="onModalClosed()">
+</app-contract-details-modal>

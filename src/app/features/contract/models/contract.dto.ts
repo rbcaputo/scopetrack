@@ -7,7 +7,7 @@ export interface ContractPostDto {
 }
 
 export interface ContractPatchDto{
-  newStatus: "Active" | "Completed" | "Archived"
+  newStatus: string
 }
 
 export interface ContractGetDto {

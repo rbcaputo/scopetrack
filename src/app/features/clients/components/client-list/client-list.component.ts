@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ClientGetDto } from '../../models/client.dto';
-import { NgIf, NgForOf } from "../../../../../../node_modules/@angular/common/common_module.d-NEF7UaHr";
+import { NgIf, NgForOf, DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-client-list',
-  imports: [NgIf, NgForOf],
+  imports: [NgIf, NgForOf, DatePipe],
   templateUrl: './client-list.component.html',
   styleUrl: './client-list.component.scss'
 })

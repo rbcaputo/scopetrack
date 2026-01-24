@@ -1,7 +1,28 @@
-<ul *ngIf="clients">
-  <li *ngFor="let client of clients" (click)="onSelect(client.id)">
-    <span>{{ client.id }}</span>
-    <strong>{{ client.name }}</strong>
-    <span>{{ client.status }}</span>
-  </li>
-</ul>
+<div class="client-list">
+  <h2>Clients</h2>
+
+  <div *ngIf="!clients || clients.length === 0" class="empty-state">
+    <p>No clients found.</p>
+  </div>
+
+  <ul *ngIf="clients && clients.length > 0" class="clients">
+    <li *ngFor="let client of clients"
+        class="client-item"
+        [class.inactive]="client.status === 'Inactive'"
+        (click)="onSelect(client.id)">
+      <div class="client-summary">
+        <div class="client-header">
+          <h3>{{ client.name }}</h3>
+          <span class="status-badge" [class.active]="client.status === 'Active'">
+            {{ client.status }}
+          </span>
+        </div>
+        <p class="client-email">{{ client.email }}</p>
+        <div class="client-meta">
+          <span class="contract-count">{{ client.contracts.length }} contract(s)</span>
+          <span class="created-date">Created: {{ client.createdAt | date:'short' }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -2,11 +2,12 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from
 import { Observable } from 'rxjs';
 import { ContractGetDto } from '../../models/contract.dto';
 import { ContractApi } from '../../api/contract.api';
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, DatePipe, NgForOf, NgIf } from '@angular/common';
+import { DeliverableDetailsModalComponent } from '../../../deliverables/components/deliverable-details-modal/deliverable-details-modal.component';
 
 @Component({
   selector: 'app-contract-details-modal',
-  imports: [NgIf, AsyncPipe],
+  imports: [NgIf, NgForOf, AsyncPipe, DatePipe, DeliverableDetailsModalComponent],
   templateUrl: './contract-details-modal.component.html',
   styleUrl: './contract-details-modal.component.scss'
 })
@@ -18,7 +19,6 @@ export class ContractDetailsModalComponent implements OnChanges {
   public selectedDeliverableId: string | null = null;
 
   constructor(private readonly contractApi: ContractApi) { }
-
   ngOnChanges(): void {
     this.contract$ = this.contractApi.getById(this.contractId);
   }

@@ -8,7 +8,7 @@ import { NgForOf } from "../../../../../../node_modules/@angular/common/common_m
   templateUrl: './deliverable-list.component.html',
   styleUrl: './deliverable-list.component.scss'
 })
-export class DeliverableDetailsModalComponent {
+export class DeliverableListComponent {
   @Input() public deliverables: DeliverableGetDto[] = [];
   @Output() public select = new EventEmitter<string>();
 

@@ -1,15 +1,60 @@
 <div class="modal-backdrop">
-  <div class="modal">
-    <button (click)="onClose()">Close</button>
-
-    <ng-container *ngIf="contract$ | async as contract">
+  <div class="modal contract-modal" *ngIf="contract$ | async as contract">
+    <div class="modal-header">
       <h2>{{ contract.title }}</h2>
-      <p>{{ contract.id }}</p>
-      <p> {{ contract.description }}</p>
-      <p>{{ contract.type }}</p>
-      <p>{{ contract.status }}</p>
-      <p>Created: {{ contract.createdAt }}</p>
-      <p>Updated: {{ contract.updatedAt }}</p>
-    </ng-container>
+      <button class="close-button" (click)="onClose()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <section class="contract-details">
+        <div class="detail-row">
+          <span class="label">Description:</span>
+          <span class="value">{{ contract.description || 'No description' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Type:</span>
+          <span class="value">{{ contract.type }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Status:</span>
+          <span class="value status-badge">{{ contract.status }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Created:</span>
+          <span class="value">{{ contract.createdAt | date:'medium' }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="label">Last Updated:</span>
+          <span class="value">{{ contract.updatedAt | date:'medium' }}</span>
+        </div>
+      </section>
+
+      <section class="deliverables-section">
+        <h3>Deliverables ({{ contract.deliverables.length }})</h3>
+
+        <div *ngIf="contract.deliverables.length === 0" class="empty-state">
+          <p>No deliverables for this contract yet.</p>
+        </div>
+
+        <ul *ngIf="contract.deliverables.length > 0" class="deliverables-list">
+          <li *ngFor="let deliverable of contract.deliverables"
+              class="deliverable-item"
+              (click)="onDeliverableSelected(deliverable.id)">
+            <div class="deliverable-summary">
+              <h4>{{ deliverable.title }}</h4>
+              <span class="status-badge">{{ deliverable.status }}</span>
+            </div>
+            <p class="deliverable-description">{{ deliverable.description || 'No description' }}</p>
+            <p *ngIf="deliverable.dueDate" class="due-date">Due: {{ deliverable.dueDate | date:'short' }}</p>
+          </li>
+        </ul>
+      </section>
+    </div>
   </div>
+
+  <app-deliverable-details-modal
+    *ngIf="selectedDeliverableId"
+    [deliverableId]="selectedDeliverableId"
+    (close)="onDeliverableModalClosed()">
+  </app-deliverable-details-modal>
 </div>

@@ -1,0 +1,63 @@
+.client-list {
+  h2 {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.clients {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+}
+
+.client-item {
+  background: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    border-color: #3498db;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+
+  &.inactive {
+    opacity: 0.7;
+  }
+}
+
+.client-summary {
+  .client-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+
+    h3 {
+      font-size: 1.25rem;
+      color: #2c3e50;
+    }
+  }
+
+  .client-email {
+    color: #666;
+    margin-bottom: 0.75rem;
+  }
+
+  .client-meta {
+    display: flex;
+    gap: 1.5rem;
+    font-size: 0.875rem;
+    color: #999;
+
+    .contract-count {
+      font-weight: 500;
+      color: #3498db;
+    }
+  }
+}

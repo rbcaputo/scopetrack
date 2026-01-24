@@ -1,0 +1,79 @@
+<div class="dashboard" *ngIf="stats$ | async as stats">
+  <h1>Dashboard</h1>
+
+  <section class="stats-grid">
+    <div class="stats-card">
+      <h2>Clients</h2>
+      <div class="stat-row">
+        <span class="label">Total:</span>
+        <span class="value">{{ stats.clients.total }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Active:</span>
+        <span class="value">{{ stats.clients.active }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Inactive:</span>
+        <span class="value">{{ stats.clients.inactive }}</span>
+      </div>
+      <a routerLink="/clients" class="view-link">View Clients →</a>
+    </div>
+
+    <div class="stats-card">
+      <h2>Contracts</h2>
+      <div class="stat-row">
+        <span class="label">Total:</span>
+        <span class="value">{{ stats.contracts.total }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Draft:</span>
+        <span class="value">{{ stats.contracts.draft }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Active:</span>
+        <span class="value">{{ stats.contracts.active }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Completed:</span>
+        <span class="value">{{ stats.contracts.completed }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Archived:</span>
+        <span class="value">{{ stats.contracts.archived }}</span>
+      </div>
+      <a routerLink="/contracts" class="view-link">View Contracts →</a>
+    </div>
+
+    <div class="stats-card">
+      <h2>Deliverables</h2>
+      <div class="stat-row">
+        <span class="label">Total:</span>
+        <span class="value">{{ stats.deliverables.total }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Pending:</span>
+        <span class="value">{{ stats.deliverables.pending }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">In Progress:</span>
+        <span class="value">{{ stats.deliverables.inProgress }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Completed:</span>
+        <span class="value">{{ stats.deliverables.completed }}</span>
+      </div>
+      <div class="stat-row">
+        <span class="label">Cancelled:</span>
+        <span class="value">{{ stats.deliverables.cancelled }}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="quick-actions">
+    <h2>Quick Actions</h2>
+    <div class="actions">
+      <a routerLink="/clients" class="action-button">View All Clients</a>
+      <a routerLink="/contracts" class="action-button">View All Contracts</a>
+    </div>
+  </section>
+</div>

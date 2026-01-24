@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ContractGetDto } from '../../models/contract.dto';
+import { DatePipe, NgForOf, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-contract-list',
-  imports: [],
+  imports: [NgIf, NgForOf, DatePipe],
   templateUrl: './contract-list.component.html',
   styleUrl: './contract-list.component.scss'
 })
