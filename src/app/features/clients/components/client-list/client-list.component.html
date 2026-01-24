@@ -1,0 +1,7 @@
+<ul *ngIf="clients">
+  <li *ngFor="let client of clients" (click)="onSelect(client.id)">
+    <span>{{ client.id }}</span>
+    <strong>{{ client.name }}</strong>
+    <span>{{ client.status }}</span>
+  </li>
+</ul>

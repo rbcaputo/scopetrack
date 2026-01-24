@@ -1,4 +1,4 @@
-import { DeliverableGetDto } from "../../deliverables/models/deliverable.dto"
+import { DeliverableGetDto } from '../../deliverables/models/deliverable.dto';
 
 export interface ContractPostDto {
   title: string,
@@ -7,7 +7,7 @@ export interface ContractPostDto {
 }
 
 export interface ContractPatchDto{
-  newStatus: string
+  newStatus: "Active" | "Completed" | "Archived"
 }
 
 export interface ContractGetDto {
@@ -16,7 +16,7 @@ export interface ContractGetDto {
   title: string,
   description: string,
   type: string,
-  status: string,
+  status: "Draft" | "Active" | "Completed" | "Archived",
   createdAt: Date,
   updatedAt: Date,
   deliverables: DeliverableGetDto[]

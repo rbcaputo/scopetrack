@@ -1,0 +1,14 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <button (click)="onClose()">Close</button>
+
+    <ng-container *ngIf="client$ | async as client">
+      <h2>{{ client.name }}</h2>
+      <p> {{ client.id }}</p>
+      <p>{{ client.email }}</p>
+      <p>{{ client.status }}</p>
+      <p>Created: {{ client.createdAt }}</p>
+      <p>Updated: {{ client.updatedAt }}</p>
+    </ng-container>
+  </div>
+</div>

@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { API_BASE_URL } from "../../../core/api/api.config";
-import { HttpClient } from "@angular/common/http";
-import { ContractGetDto, ContractPatchDto } from "../models/contract.dto";
-import { Observable } from "rxjs";
-import { DeliverableGetDto, DeliverablePostDto } from "../../deliverables/models/deliverable.dto";
+import { Injectable } from '@angular/core';
+import { API_BASE_URL } from '../../../core/api/api.config';
+import { HttpClient } from '@angular/common/http';
+import { ContractGetDto, ContractPatchDto } from '../models/contract.dto';
+import { Observable } from 'rxjs';
+import { DeliverableGetDto, DeliverablePostDto } from '../../deliverables/models/deliverable.dto';
 
 Injectable({ providedIn: "root" })
 export class ContractApi {

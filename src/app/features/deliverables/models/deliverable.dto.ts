@@ -5,7 +5,7 @@ export interface DeliverablePostDto {
 }
 
 export interface DeliverablePatchDto {
-  newStatus: string
+  newStatus: "InProgress" | "Completed" | "Cancelled"
 }
 
 export interface DeliverableGetDto {
@@ -13,7 +13,7 @@ export interface DeliverableGetDto {
   contractId: string,
   title: string,
   description?: string,
-  status: string,
+  status: "Pending" | "InProgress" | "Completed" | "Cancelled",
   dueDate?: Date,
   createdAt: Date,
   updatedAt: Date

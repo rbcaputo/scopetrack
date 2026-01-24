@@ -1,4 +1,4 @@
-import { ContractGetDto } from "../../contract/models/contract.dto"
+import { ContractGetDto } from '../../contract/models/contract.dto';
 
 export interface ClientPostDto {
   name: string,
@@ -14,7 +14,7 @@ export interface ClientGetDto {
   id: string,
   name: string,
   email: string,
-  status: string,
+  status: "Active" | "Inactive",
   createdAt: Date,
   updatedAt: Date,
   contracts: ContractGetDto[]

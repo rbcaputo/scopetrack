@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { API_BASE_URL } from "../../../core/api/api.config";
-import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { ClientGetDto, ClientPostDto, ClientPutDto } from "../models/client.dto";
-import { ContractGetDto, ContractPostDto } from "../../contract/models/contract.dto";
+import { Injectable } from '@angular/core';
+import { API_BASE_URL } from '../../../core/api/api.config';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ClientGetDto, ClientPostDto, ClientPutDto } from '../models/client.dto';
+import { ContractGetDto, ContractPostDto } from '../../contract/models/contract.dto';
 
 @Injectable({ providedIn: "root" })
 export class ClientApi {

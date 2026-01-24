@@ -1,0 +1,15 @@
+<div class="modal-backdrop">
+  <div class="modal">
+    <button (click)="onClose()">Close</button>
+
+    <ng-container *ngIf="contract$ | async as contract">
+      <h2>{{ contract.title }}</h2>
+      <p>{{ contract.id }}</p>
+      <p> {{ contract.description }}</p>
+      <p>{{ contract.type }}</p>
+      <p>{{ contract.status }}</p>
+      <p>Created: {{ contract.createdAt }}</p>
+      <p>Updated: {{ contract.updatedAt }}</p>
+    </ng-container>
+  </div>
+</div>

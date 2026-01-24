@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let deliverable of deliverables" (click)="onSelect(deliverable.id)">
+    {{ deliverable.title }} - {{ deliverable.status }}
+  </li>
+</ul>
