@@ -1,6 +1,26 @@
 <h1>Clients</h1>
 
-<app-client-list [clients]="clients$ | async" (select)="onClientSelected($event)"></app-client-list>
+<app-toolbar
+  [actions]="toolbarActions"
+  [showSearch]="true"
+  [searchPlaceholder]="'Search clients...'"
+  [searchTerm]="searchTerm"
+  (searchChange)="onSearchChange($event)">
+</app-toolbar>
 
-<app-client-details-modal *ngIf="selectedClientId" [clientId]="selectedClientId"
-  (close)="onModalClosed()"></app-client-details-modal>
+<app-client-list
+  [clients]="filteredClients$ | async"
+  (select)="onClientSelected($event)">
+</app-client-list>
+
+<app-client-form-modal
+  *ngIf="showCreateForm"
+  (close)="showCreateForm = false"
+  (saved)="onClientCreated()">
+</app-client-form-modal>
+
+<app-client-details-modal
+  *ngIf="selectedClientId"
+  [clientId]="selectedClientId"
+  (close)="onModalClosed()">
+</app-client-details-modal>

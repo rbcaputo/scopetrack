@@ -37,10 +37,6 @@ export class ClientDetailsModalComponent implements OnChanges {
     this.loadClient();
   }
 
-  public onUpdateDetails(): void {
-    // TODO: Implement update client details modal/form
-  }
-
   public onToggleStatus(): void {
     this.isUpdating = true;
     this.error = null;

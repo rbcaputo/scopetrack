@@ -49,12 +49,12 @@ export class ContractDetailsModalComponent implements OnChanges {
 
     this.contractApi.patchStatus(this.contractId, dto).subscribe({
       next: () => {
-        this.isUpdating = true;
+        this.isUpdating = false;
         this.loadContract();
       },
       error: (er) => {
         this.isUpdating = false;
-        this.error = er.error?.messsage || "Failed to update status";
+        this.error = er.error?.message || "Failed to update status";
       }
     });
   }

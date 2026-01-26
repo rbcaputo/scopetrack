@@ -25,7 +25,7 @@ export class DeliverableFormModalComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: ["", Validators.required, Validators.minLength(10), Validators.maxLength(200)],
+      title: ["", Validators.required, [Validators.minLength(10), Validators.maxLength(200)]],
       description: ["", Validators.maxLength(1000)],
       dueDate: [""]
     });

@@ -1,0 +1,21 @@
+<div class="toolbar">
+  <div class="toolbar-section">
+    <button
+      *ngFor="let action of actions"
+      class="toolbar-button"
+      [class.primary]="action.primary"
+      (click)="action.onClick()">
+      {{ action.label }}
+    </button>
+  </div>
+
+  <div class="toolbar-section search-section" *ngIf="showSearch">
+    <input
+      type="text"
+      class="search-input"
+      [placeholder]="searchPlaceholder"
+      [value]="searchTerm"
+      (input)="onSearchChange($event)">
+    <span class="search-icon">🔍</span>
+  </div>
+</div>
