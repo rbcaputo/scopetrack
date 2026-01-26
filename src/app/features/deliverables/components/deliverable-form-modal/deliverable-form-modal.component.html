@@ -1,0 +1,57 @@
+<div class="modal-backdrop">
+  <div class="modal form-modal">
+    <div class="modal-header">
+      <h2>Add Deliverable</h2>
+      <button class="close-button" (click)="onClose()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <div class="form-group">
+          <label for="title">Title *</label>
+          <input
+            id="title"
+            type="text"
+            formControlName="title"
+            placeholder="Deliverable title"
+            [class.error]="form.get('title')?.invalid && form.get('title')?.touched">
+          <div class="field-error" *ngIf="form.get('title')?.invalid && form.get('title')?.touched">
+            Title is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            formControlName="description"
+            placeholder="Deliverable description"
+            rows="4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="dueDate">Due Date</label>
+          <input
+            id="dueDate"
+            type="date"
+            formControlName="dueDate">
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="action-button secondary" (click)="onClose()">
+            Cancel
+          </button>
+          <button type="submit" class="action-button primary" [disabled]="form.invalid || isSubmitting">
+            Add Deliverable
+          </button>
+        </div>
+
+        <p *ngIf="isSubmitting" class="updating-message">Saving...</p>
+      </form>
+    </div>
+  </div>
+</div>

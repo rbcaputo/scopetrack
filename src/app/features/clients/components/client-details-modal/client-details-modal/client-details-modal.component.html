@@ -27,6 +27,39 @@
         </div>
       </section>
 
+      <section class="actions-section">
+        <h3>Actions</h3>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <div class="action-buttons">
+          <button
+            class="action-button primary"
+            (click)="showUpdateForm = true"
+            [disabled]="isUpdating">
+            Update Information
+          </button>
+
+          <button
+            class="action-button secondary"
+            (click)="onToggleStatus()"
+            [disabled]="isUpdating">
+            {{ client.status === 'Active' ? 'Deactivate' : 'Activate' }} Client
+          </button>
+
+          <button
+            class="action-button secondary"
+            (click)="showContractForm = true"
+            [disabled]="isUpdating">
+            Add Contract
+          </button>
+        </div>
+
+        <p *ngIf="isUpdating" class="updating-message">Updating...</p>
+      </section>
+
       <section class="contracts-section">
         <h3>Contracts ({{ client.contracts.length }})</h3>
 
@@ -49,6 +82,20 @@
       </section>
     </div>
   </div>
+
+  <app-client-form-modal
+    *ngIf="showUpdateForm && (client$ | async) as client"
+    [client]="client"
+    (close)="showUpdateForm = false"
+    (saved)="onClientUpdated()">
+  </app-client-form-modal>
+
+  <app-contract-form-modal
+    *ngIf="showContractForm"
+    [clientId]="clientId"
+    (close)="showContractForm = false"
+    (saved)="onContractAdded()">
+  </app-contract-form-modal>
 
   <app-contract-details-modal
     *ngIf="selectedContractId"

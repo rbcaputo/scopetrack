@@ -1,55 +1,57 @@
 .dashboard {
   h1 {
     font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 2rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-2xl);
+    font-weight: 700;
   }
 
   h2 {
     font-size: 1.25rem;
-    color: #2c3e50;
-    margin-bottom: 1rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    font-weight: 600;
   }
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-bottom: 3rem;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-3xl);
 }
 
 .stats-card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: var(--color-surface);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 
   h2 {
     font-size: 1.25rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #3498db;
+    margin-bottom: var(--space-lg);
+    padding-bottom: var(--space-md);
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .stat-row {
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #f0f0f0;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--color-border-light);
 
     &:last-of-type {
       border-bottom: none;
-      margin-bottom: 1rem;
+      margin-bottom: var(--space-lg);
     }
 
     .label {
-      color: #666;
+      color: var(--color-text-muted);
       font-weight: 500;
     }
 
     .value {
-      color: #2c3e50;
+      color: var(--color-text);
       font-weight: 600;
       font-size: 1.1rem;
     }
@@ -57,28 +59,28 @@
 }
 
 .quick-actions {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  background: var(--color-surface);
+  padding: var(--space-xl);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
 
   .actions {
     display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: var(--space-lg);
+    margin-top: var(--space-lg);
   }
 
   .action-button {
-    background: #3498db;
+    background: var(--color-primary);
     color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    padding: var(--space-md) var(--space-xl);
+    border-radius: var(--radius-sm);
     text-decoration: none;
     font-weight: 500;
-    transition: background 0.2s;
+    transition: background var(--transition-base);
 
     &:hover {
-      background: #2980b9;
+      background: var(--color-primary-dark);
     }
   }
 }

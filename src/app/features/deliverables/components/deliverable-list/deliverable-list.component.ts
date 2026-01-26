@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { DeliverableGetDto } from '../../models/deliverable.dto';
-import { NgForOf } from "../../../../../../node_modules/@angular/common/common_module.d-NEF7UaHr";
+import { NgForOf } from "@angular/common/";
 
 @Component({
   selector: 'app-deliverable-list',

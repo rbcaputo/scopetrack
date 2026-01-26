@@ -5,7 +5,7 @@ import { ContractGetDto, ContractPatchDto } from '../models/contract.dto';
 import { Observable } from 'rxjs';
 import { DeliverableGetDto, DeliverablePostDto } from '../../deliverables/models/deliverable.dto';
 
-Injectable({ providedIn: "root" })
+@Injectable({ providedIn: "root" })
 export class ContractApi {
   private readonly baseUrl = `${API_BASE_URL}/contracts`;
 

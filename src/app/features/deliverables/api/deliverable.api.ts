@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { DeliverableGetDto, DeliverablePatchDto } from '../models/deliverable.dto';
 import { Observable } from 'rxjs';
 
-Injectable({ providedIn: "root"})
+@Injectable({ providedIn: "root"})
 export class DeliverableApi {
   private readonly baseUrl = `${API_BASE_URL}/deliverables`;
 

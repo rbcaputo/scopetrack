@@ -1,28 +1,28 @@
 .client-list {
   h2 {
     font-size: 1.5rem;
-    color: #2c3e50;
-    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-xl);
+    font-weight: 600;
   }
 }
 
 .clients {
-  list-style: none;
   display: grid;
-  gap: 1rem;
+  gap: var(--space-lg);
 }
 
 .client-item {
-  background: white;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1.5rem;
+  background: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all var(--transition-base);
 
   &:hover {
-    border-color: #3498db;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-lg);
     transform: translateY(-2px);
   }
 
@@ -36,28 +36,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: var(--space-md);
 
     h3 {
       font-size: 1.25rem;
-      color: #2c3e50;
+      color: var(--color-text);
+      font-weight: 600;
+      margin: 0;
     }
   }
 
   .client-email {
-    color: #666;
-    margin-bottom: 0.75rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-md);
   }
 
   .client-meta {
     display: flex;
-    gap: 1.5rem;
+    gap: var(--space-xl);
     font-size: 0.875rem;
-    color: #999;
+    color: var(--color-text-light);
 
     .contract-count {
       font-weight: 500;
-      color: #3498db;
+      color: var(--color-primary);
     }
   }
 }

@@ -29,6 +29,39 @@
         </div>
       </section>
 
+      <section class="actions-section">
+        <h3>Actions</h3>
+
+        <div *ngIf="error" class="error-message">
+          {{ error }}
+        </div>
+
+        <div class="status-actions">
+          <p>Change status to:</p>
+          <div class="status-buttons">
+            <button
+              *ngFor="let status of availableStatuses"
+              [disabled]="status === contract.status || isUpdating"
+              (click)="onStatusChange(status)"
+              class="status-button"
+              [class]="status.toLowerCase()">
+              {{ status }}
+            </button>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button
+            class="action-button secondary"
+            (click)="showDeliverableForm = true"
+            [disabled]="isUpdating">
+            Add Deliverable
+          </button>
+        </div>
+
+        <p *ngIf="isUpdating" class="updating-message">Updating...</p>
+      </section>
+
       <section class="deliverables-section">
         <h3>Deliverables ({{ contract.deliverables.length }})</h3>
 
@@ -51,6 +84,13 @@
       </section>
     </div>
   </div>
+
+  <app-deliverable-form-modal
+    *ngIf="showDeliverableForm"
+    [contractId]="contractId"
+    (close)="showDeliverableForm = false"
+    (saved)="onDeliverableAdded()">
+  </app-deliverable-form-modal>
 
   <app-deliverable-details-modal
     *ngIf="selectedDeliverableId"

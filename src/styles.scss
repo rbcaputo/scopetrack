@@ -1,1 +1,584 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===== CSS Reset ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption,
+tbody, tfoot, thead, tr, th, td, article,
+aside, canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output,
+ruby, section, summary, time, mark, audio, video {
+  font: inherit;
+  font-size: 100%;
+  padding: 0;
+  border: none;
+  margin: 0;
+  vertical-align: baseline;
+}
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1.5;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* ===== Design Tokens ===== */
+:root {
+  /* Colors - Primary */
+  --color-primary: #3498db;
+  --color-primary-dark: #2980b9;
+  --color-primary-light: rgba(52, 152, 219, 0.1);
+
+  /* Colors - Text */
+  --color-text: #2c3e50;
+  --color-text-muted: #666;
+  --color-text-light: #999;
+
+  /* Colors - Borders */
+  --color-border: #e0e0e0;
+  --color-border-light: #f0f0f0;
+
+  /* Colors - Backgrounds */
+  --color-bg: #f5f6fa;
+  --color-surface: #ffffff;
+
+  /* Colors - Status (Clients) */
+  --color-status-active-bg: #d4edda;
+  --color-status-active-text: #155724;
+  --color-status-inactive-bg: #f8d7da;
+  --color-status-inactive-text: #721c24;
+
+  /* Colors - Status (Contracts) */
+  --color-status-draft-bg: #e2e3e5;
+  --color-status-draft-text: #383d41;
+  --color-status-completed-bg: #d1ecf1;
+  --color-status-completed-text: #0c5460;
+  --color-status-archived-bg: #f8d7da;
+  --color-status-archived-text: #721c24;
+
+  /* Colors - Status (Deliverables) */
+  --color-status-pending-bg: #fff3cd;
+  --color-status-pending-text: #856404;
+  --color-status-inprogress-bg: #cce5ff;
+  --color-status-inprogress-text: #004085;
+  --color-status-cancelled-bg: #f8d7da;
+  --color-status-cancelled-text: #721c24;
+
+  /* Colors - Feedback */
+  --color-error-bg: #f8d7da;
+  --color-error-text: #721c24;
+  --color-error-border: #f5c6cb;
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+
+  /* Z-index */
+  --z-modal: 1000;
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: color var(--transition-base);
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+/* ===== Layout ===== */
+header {
+  background: var(--color-surface);
+  border-bottom: 2px solid var(--color-border);
+  padding: var(--space-lg) var(--space-xl);
+  box-shadow: var(--shadow-sm);
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xl);
+    max-width: 1400px;
+    margin: 0 auto;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0;
+
+      a {
+        color: var(--color-text);
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      gap: var(--space-xl);
+
+      a {
+        color: var(--color-text-muted);
+        font-weight: 500;
+        padding: var(--space-sm) var(--space-lg);
+        border-radius: var(--radius-sm);
+        transition: all var(--transition-base);
+
+        &:hover {
+          color: var(--color-primary);
+          background-color: var(--color-primary-light);
+        }
+
+        &.active {
+          color: var(--color-primary);
+          background-color: rgba(52, 152, 219, 0.15);
+        }
+      }
+    }
+  }
+}
+
+main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-2xl);
+
+  > h1 {
+    font-size: 2rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-2xl);
+    font-weight: 700;
+  }
+}
+
+/* ===== Shared Components ===== */
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: var(--space-2xl);
+  color: var(--color-text-muted);
+
+  p {
+    font-size: 1.1rem;
+  }
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+
+  &.active {
+    background-color: var(--color-status-active-bg);
+    color: var(--color-status-active-text);
+  }
+
+  &.inactive {
+    background-color: var(--color-status-inactive-bg);
+    color: var(--color-status-inactive-text);
+  }
+
+  &.draft {
+    background-color: var(--color-status-draft-bg);
+    color: var(--color-status-draft-text);
+  }
+
+  &.completed {
+    background-color: var(--color-status-completed-bg);
+    color: var(--color-status-completed-text);
+  }
+
+  &.archived {
+    background-color: var(--color-status-archived-bg);
+    color: var(--color-status-archived-text);
+  }
+
+  &.pending {
+    background-color: var(--color-status-pending-bg);
+    color: var(--color-status-pending-text);
+  }
+
+  &.inprogress {
+    background-color: var(--color-status-inprogress-bg);
+    color: var(--color-status-inprogress-text);
+  }
+
+  &.cancelled {
+    background-color: var(--color-status-cancelled-bg);
+    color: var(--color-status-cancelled-text);
+  }
+}
+
+/* Modals */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-modal);
+  padding: var(--space-lg);
+}
+
+.modal {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-xl);
+    border-bottom: 2px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    background: var(--color-surface);
+    z-index: 1;
+
+    h2 {
+      font-size: 1.5rem;
+      color: var(--color-text);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .close-button {
+      background: none;
+      border: none;
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: 0;
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color var(--transition-base);
+
+      &:hover {
+        color: var(--color-text);
+      }
+    }
+  }
+
+  .modal-body {
+    padding: var(--space-xl);
+  }
+}
+
+/* Form Styles */
+.form-modal {
+  max-width: 600px;
+}
+
+.form-group {
+  margin-bottom: var(--space-xl);
+
+  label {
+    display: block;
+    margin-bottom: var(--space-sm);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+    padding: var(--space-md);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    transition: border-color var(--transition-base);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+
+    &.error {
+      border-color: #e74c3c;
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    font-family: inherit;
+  }
+
+  select {
+    cursor: pointer;
+  }
+}
+
+.field-error {
+  margin-top: var(--space-xs);
+  color: #e74c3c;
+  font-size: 0.875rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--color-border);
+}
+
+/* Detail Sections */
+.client-details,
+.contract-details,
+.deliverable-details {
+  .detail-row {
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border-light);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      font-weight: 600;
+      color: var(--color-text-muted);
+      min-width: 120px;
+      flex-shrink: 0;
+    }
+
+    .value {
+      color: var(--color-text);
+      flex: 1;
+    }
+  }
+}
+
+/* Action Sections */
+.actions-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--color-border);
+
+  h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    font-weight: 600;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+  }
+
+  .action-button {
+    padding: var(--space-md) var(--space-xl);
+    border: 2px solid transparent;
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    font-size: 0.875rem;
+
+    &.primary {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+
+      &:hover:not(:disabled) {
+        background: var(--color-primary-dark);
+        border-color: var(--color-primary-dark);
+      }
+    }
+
+    &.secondary {
+      background: white;
+      color: var(--color-primary);
+      border-color: var(--color-primary);
+
+      &:hover:not(:disabled) {
+        background: var(--color-primary-light);
+      }
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+  }
+}
+
+/* Nested Lists in Modals */
+.contracts-section,
+.deliverables-section {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-xl);
+  border-top: 2px solid var(--color-border);
+
+  h3 {
+    font-size: 1.25rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-lg);
+    font-weight: 600;
+  }
+}
+
+.contracts-list,
+.deliverables-list {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.contract-item,
+.deliverable-item {
+  padding: var(--space-lg);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  background: var(--color-surface);
+  transition: all var(--transition-base);
+
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+  }
+}
+
+.contract-summary,
+.deliverable-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-sm);
+
+  h4 {
+    font-size: 1.1rem;
+    color: var(--color-text);
+    font-weight: 600;
+    margin: 0;
+  }
+}
+
+.contract-type,
+.deliverable-description,
+.deliverables-count,
+.due-date {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-xs);
+  line-height: 1.4;
+}
+
+.deliverables-count {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+/* Error & Info Messages */
+.error-message {
+  padding: var(--space-lg);
+  background-color: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: 1px solid var(--color-error-border);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.updating-message {
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-top: var(--space-sm);
+  font-size: 0.875rem;
+}
+
+/* View Links */
+.view-link {
+  display: inline-block;
+  margin-top: var(--space-lg);
+  font-weight: 500;
+  color: var(--color-primary);
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
