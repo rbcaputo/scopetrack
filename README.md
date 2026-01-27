@@ -579,4 +579,4 @@ export const environment = {
 
 ## License
 Open source.\
-MIT License as defined in the repository[LICENSE](/LICENSE).
+MIT License as defined in the repository [LICENSE](/LICENSE).
