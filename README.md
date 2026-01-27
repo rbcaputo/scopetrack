@@ -19,7 +19,7 @@ A mordern Angular single-page application for managing clients, contracts, and d
 ---
 
 ## Overview
-ScopeTrack UI provides a complete frontend solution for
+ScopeTrack UI provides a complete frontend solution for:
 * **Client Management** – View, create, update, and manage client status
 * **Contract Management** – Track contracts, update statuses, and view deliverables
 * **Deliverable Management** – Manage work items within contracts
@@ -31,7 +31,7 @@ The application follows Angular best practices with standalone components, react
 ---
 
 ## Architecture
-This solution follows **Feature-Based Architecture** with clear module boudaries:
+This solution follows **Feature-Based Architecture** with clear module boundaries:
 ```text
 [Pages] → [Features] → [Shared Components] → [Core Services] → [API Layer]
 ```
@@ -40,7 +40,7 @@ This solution follows **Feature-Based Architecture** with clear module boudaries
 |-------|----------------|
 | Pages | Route containers, page-level orchestration |
 | Features | Domain-specific components and logic |
-| Shared | Resusable components and interfaces |
+| Shared | Reusable components and interfaces |
 | Core | API configuration, base services |
 | API | HTTP client services, DTOs |
 
@@ -154,7 +154,7 @@ cd scopetrack-ui
 npm install
 ```
 
-3. **Configure API endpoint**
+3. **Configure API endpoint**\
 Edit `src/environments/environment.ts`:
 ```typescript
 export const environment = {
@@ -174,7 +174,7 @@ Open browser to: `http://localhost:4200`
 
 ---
 
-## Application features
+## Application Features
 
 ### Dashboard
 * Real-time statistics for clients, contracts, and deliverables
@@ -191,7 +191,7 @@ Open browser to: `http://localhost:4200`
 
 ### Contract Management
 * **List View:** Grid of contract cards with status, type, and deliverable count
-* **Status Management:** Chnage status between Draft/Active/Completed/Archived
+* **Status Management:** Change status between Draft/Active/Completed/Archived
 * **Add Deliverable:** Create deliverables within contracts
 * **View Details:** Modal showing full contract information and nested deliverables
 
@@ -236,8 +236,6 @@ Open browser to: `http://localhost:4200`
 * Example: `ToolbarComponent`
 
 ### Component Patterns
-
-#### Smart/Presentational Patter
 
 ##### Smart/Presentational Pattern
 **Smart Component (ClientsPageComponent):**
@@ -323,7 +321,7 @@ private loadClients(): void {
 ### State Principles
 * **No Global State Store:** Each component manages its own data needs
 * **Observable Streams:** RxJS for reactive data flow
-* **API as Source of Truth:** Always fetch freash data after mutations
+* **API as Source of Truth:** Always fetch fresh data after mutations
 * **Local UI State:** Component properties for modals, loading flags, errors
 
 ---
@@ -502,11 +500,11 @@ ng generate interface shared/models/api-response
 ### Reactive Patterns
 1. **Observable suffixes** – Use `$` suffix for observable properties (`clients$`)
 2. **Async pipe** – Subscribe in templates, not components
-3. **No manual unsubscribe** – Lat async pipe handle subscriptions
+3. **No manual unsubscribe** – Let async pipe handle subscriptions
 4. **BehaviorSubject for state** – When local state needs to be shared reactively
 
 ### Form Handling
-1. **Reactive Forms** – Use `FormBuilder` and `ForGroup`
+1. **Reactive Forms** – Use `FormBuilder` and `FormGroup`
 2. **Validation** – Apply validators at form creation
 3. **Error display** – Show field-level errors on touch
 4. **Disable on submit** – Prevent double submissions
@@ -581,4 +579,4 @@ export const environment = {
 
 ## License
 Open source.\
-MIT License as defined in the repository[LICENCSE](./LICENSE).
+MIT License as defined in the repository[LICENSE](/LICENSE).
