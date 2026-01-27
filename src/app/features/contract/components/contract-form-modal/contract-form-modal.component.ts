@@ -25,9 +25,9 @@ export class ContractFormModalComponent implements OnInit {
   ) { }
   ngOnInit(): void {
     this.form = this.fb.group({
-      title: ["", Validators.required, [Validators.minLength(5), Validators.maxLength(200)]],
-      description: ["", Validators.maxLength(1000)],
-      type: ["", Validators.required]
+      title: ["", [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
+      description: ["", [Validators.maxLength(1000)]],
+      type: ["", [Validators.required]]
     });
   }
 

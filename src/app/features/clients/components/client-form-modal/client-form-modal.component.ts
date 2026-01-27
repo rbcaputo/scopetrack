@@ -30,7 +30,7 @@ export class ClientFormModalComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.fb.group({
       name: [this.client?.name || "", [Validators.required, Validators.minLength(3), Validators.maxLength(100)]],
-      email: [this.client?.email || "", [Validators.required, Validators.email]]
+      email: [this.client?.email || "", [Validators.required, Validators.email, Validators.minLength(5)]]
     });
   }
 
